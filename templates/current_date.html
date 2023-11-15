@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +9,20 @@
         a {
             font-weight: bold;
             color: blue;
-            font-size: 2.0em;
+            font-size: 1.3em;
         }
     </style>
 
 </head>
 <body>
-    <a href='/hello/'>
-        Click this
-    </a>
+    <h1>Current Date:</h1>
+    <p>Date: {{ current_date }}</p>
+    <p>Time: {{ current_time }}</p>
+
+    <p>
+        <a href='/goodby/'>
+            Click this
+        </a>
+    </p>
 </body>
 </html>

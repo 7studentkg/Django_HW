@@ -20,5 +20,8 @@ from post import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello', views.hello_world)
+    path('', views.title_page),
+    path('hello/', views.hello_world),
+    path('current_date/', views.current_date),
+    path('goodby/', views.goodby )
 ]
