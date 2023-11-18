@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+
 class Product(models.Model):
     image = models.ImageField(upload_to = 'product', null = True, blank = True)
     title = models.CharField(max_length = 200)

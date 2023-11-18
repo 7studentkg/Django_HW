@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.title_page),
     path('product', views.product_view)
+
     # path('hello/', views.hello_world),
     # path('current_date/', views.current_date),
     # path('goodby/', views.goodby )
