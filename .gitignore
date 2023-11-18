@@ -1,7 +1,14 @@
 .venv
+<<<<<<< HEAD
 venv\
 
 db.sqlite3
 
 __pycache__/
 __pycache__\
+=======
+
+__pycache__/
+
+db.sqlite3
+>>>>>>> 5cc4ba3f8366d81ac57f1c64477c59f67b462210

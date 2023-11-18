@@ -16,15 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc4ba3f8366d81ac57f1c64477c59f67b462210
 from post import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.title_page),
+<<<<<<< HEAD
     path('product', views.product_view)
 
     # path('hello/', views.hello_world),
     # path('current_date/', views.current_date),
     # path('goodby/', views.goodby )
+=======
+    path('hello/', views.hello_world),
+    path('current_date/', views.current_date),
+    path('goodby/', views.goodby )
+>>>>>>> 5cc4ba3f8366d81ac57f1c64477c59f67b462210
 ]
