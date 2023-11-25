@@ -22,7 +22,6 @@ from post import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.title_page),
-
     path('product', views.product_view)
 
     # path('hello/', views.hello_world),
