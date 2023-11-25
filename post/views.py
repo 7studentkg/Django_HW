@@ -24,7 +24,14 @@ def product_view(request):
 
         return render(request, 'product.html', context)
 
+def category_view(request):
+    if request.method == 'GET':
+        category = Category.objects.all()
 
+        context ={
+            'category' : category
+        }
+        return render(request, 'category.html', context)
 
 
 # def hello_world(request):
