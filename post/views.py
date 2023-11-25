@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from datetime import datetime
+# from datetime import datetime
 
 from post.models import Product, Category
 
@@ -15,10 +15,11 @@ def title_page(request):
 def product_view(request):
      if request.method == 'GET':
         products = Product.objects.all() # QuerySet
-        products.category.all()
+        categories = Category.objects.all()
 
         context = {
-            'products': products
+            'products': products,
+            'category' : categories
         }
 
         return render(request, 'product.html', context)

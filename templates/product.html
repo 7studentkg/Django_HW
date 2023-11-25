@@ -14,7 +14,7 @@
           <h5 class="card-title">{{ product.title }}</h5>
           <p class="card-text">{{ product.rate }}</p>
             {%for category in category.html.all%}
-              <a href="#" class="btn btn-primary">#{{category}}</a>
+                <a href="#" class="btn btn-primary">#{{ category.title }}</a>
             {% endfor %}
           <a href="#" class="btn btn-primary">More</a>
         </div>
