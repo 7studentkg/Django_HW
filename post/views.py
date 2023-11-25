@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 # from datetime import datetime
 
 from post.models import Product, Category
@@ -32,6 +32,12 @@ def category_view(request):
             'category' : category
         }
         return render(request, 'category.html', context)
+
+def category_products(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    products = Product.objects.filter(category=category)
+    context = {"category": category, "products": products}
+    return render(request, 'product.html', context)
 
 
 # def hello_world(request):

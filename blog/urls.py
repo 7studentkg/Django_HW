@@ -23,8 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.title_page),
     path('product', views.product_view),
-    path('category', views.category_view)
-
+    path('category', views.category_view),
+    path('categories/<int:category_id>/', views.category_products, name='category_products'),
     # path('hello/', views.hello_world),
     # path('current_date/', views.current_date),
     # path('goodby/', views.goodby )
