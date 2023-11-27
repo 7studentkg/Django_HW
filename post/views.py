@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 # from datetime import datetime
 
-from post.models import Product, Category
+from post.models import Product, Category, Review
 
 
 def title_page(request):
@@ -16,10 +16,13 @@ def product_view(request):
      if request.method == 'GET':
         products = Product.objects.all() # QuerySet
         categories = Category.objects.all()
+        reviews = Review.objects.all()
 
         context = {
             'products': products,
-            'category' : categories
+            'category' : categories,
+            'reviews' : reviews,
+
         }
 
         return render(request, 'product.html', context)
@@ -32,6 +35,21 @@ def category_view(request):
             'category' : category
         }
         return render(request, 'category.html', context)
+
+def product_datail_view(request, product_id):
+    if request.method == 'GET':
+        try:
+            product = Product.objects.get(id = product_id)
+        except Product.DoesNotExist:
+            return render (request, 'errors/404.html')
+
+        context  = {
+            'product' : product
+        }
+
+
+        return render(request, 'product_detail.html', context)
+
 
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)

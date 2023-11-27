@@ -21,3 +21,8 @@ class Product(models.Model):
 
     def __str__ (self):
         return f'{self.id} {self.title}'
+
+class Review (models.Model):
+    post = models.ForeignKey('post.Product', on_delete=models.CASCADE, related_name='review')
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
