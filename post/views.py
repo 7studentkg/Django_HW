@@ -1,7 +1,8 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 # from datetime import datetime
 
 from post.models import Product, Category, Review
+from post.forms import ProductCreateForm, CategoryCreateForm, ReviewCreateForm
 
 
 def title_page(request):
@@ -30,7 +31,6 @@ def product_view(request):
 def category_view(request):
     if request.method == 'GET':
         category = Category.objects.all()
-
         context ={
             'category' : category
         }
@@ -56,6 +56,57 @@ def category_products(request, category_id):
     products = Product.objects.filter(category=category)
     context = {"category": category, "products": products}
     return render(request, 'product.html', context)
+
+
+def product_create(request):
+    if request.method == 'GET':
+        context = {
+            'form' : ProductCreateForm
+        }
+        return render(request, 'create_p.html', context)
+    if request.method == "POST":
+        form = ProductCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            Product.objects.create(**form.cleaned_data)
+                # title = form.cleaned_data['title'],
+                # content = form.cleaned_data['content'],
+                # image = form.cleaned_data['image'],
+                # rate = form.cleaned_data['rate']
+
+            return redirect ('/product')
+
+        context = {
+        'form' : form
+        }
+
+    return render(request, 'create_c.html', context)
+
+def category_create(request):
+    if request.method == 'POST':
+        form = CategoryCreateForm(request.POST)
+        if form.is_valid():
+            form.save() # сохраняет
+            return redirect('/category')
+
+    else:
+        form = CategoryCreateForm()
+
+    context = {'form': form}
+    return render(request, 'create_c.html', context)
+
+def review_create(request):
+    if request.method == 'POST':
+        form = ReviewCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/product')
+
+    else:
+        form = ReviewCreateForm()
+
+    context = {'form': form}
+    return render(request, 'create_r.html', context)
+
 
 
 # def hello_world(request):

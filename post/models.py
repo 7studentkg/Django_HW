@@ -16,7 +16,7 @@ class Product(models.Model):
     rate = models.FloatField(default = 0)
     create_at = models.DateTimeField(auto_now_add = True)
     update_at = models.DateTimeField(auto_now = True)
-    category = models.ForeignKey(Category, on_delete = models.CASCADE, related_name = 'category')
+    category = models.ForeignKey(Category, on_delete = models.CASCADE,null = True, blank = True, related_name = 'category')
 
 
     def __str__ (self):

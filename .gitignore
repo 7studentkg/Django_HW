@@ -9,3 +9,7 @@ static/
 staticfiles/
 
 media/
+
+templates/product/
+
+requirements.txt
