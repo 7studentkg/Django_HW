@@ -14,7 +14,7 @@ class ProductCreateForm(forms.Form):
     def clean_content(self):
         cleaned_data = super().clean()
         content = cleaned_data.get('content')
-        if len(content) < 30:
+        if len(content) < 20:
             raise forms.ValidationError("Content to short!")
         if not content:
             raise forms.ValidationError("Content is rewuired!")

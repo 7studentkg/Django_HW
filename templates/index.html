@@ -22,27 +22,44 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/category">Category</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/product">Product</a>
-              </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/category">Category</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="/users/login/">Category</a>
+                </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="/product">Product</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="/users/login/">Product</a>
+                </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Create
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/create_p">Create Product</a></li>
+                    <li><a class="dropdown-item" href="/create_c">Create Category</a></li>
+                    <li><a class="dropdown-item" href="/create_r">Create Reviews</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
+                  </ul>
+                </li>
+              {% else %}
+                <a class="nav-link" href="/users/login/">Login</a>
+                <a class="nav-link" href="/users/register/">Register</a>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Create
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/create_p">Create Product</a></li>
-                  <li><a class="dropdown-item" href="/create_c">Create Category</a></li>
-                  <li><a class="dropdown-item" href="/create_r">Create Reviews</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
+              {% endif %}
               <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="/users/profile">Profile</a>
               </li>
             </ul>
             <form class="d-flex">

@@ -42,13 +42,11 @@ def product_datail_view(request, product_id):
             product = Product.objects.get(id = product_id)
         except Product.DoesNotExist:
             return render (request, 'errors/404.html')
-
         context  = {
-            'product' : product
+            'product' : product,
         }
-
-
         return render(request, 'product_detail.html', context)
+
 
 
 def category_products(request, category_id):
@@ -66,7 +64,7 @@ def product_create(request):
         return render(request, 'create_p.html', context)
     if request.method == "POST":
         form = ProductCreateForm(request.POST, request.FILES)
-        if form.is_valid():
+        if form.is_valid():  # Проверка входящих данных
             Product.objects.create(**form.cleaned_data)
                 # title = form.cleaned_data['title'],
                 # content = form.cleaned_data['content'],
