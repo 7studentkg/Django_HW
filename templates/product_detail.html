@@ -18,11 +18,13 @@
     <h2>rate: {{product.rate}}</h2>
     <p>{{product.content}}</p>
 
+    <a href="update" class="btn btn-primary">Update</a> {% comment %} 43:53 {% endcomment %}
     <h3>Reviews:</h3>
     {% for review in product.review.all %}
         <p>{{review.text}}</p>
         <p>Created review: {{review.created_at}}</p>
         {% endfor %}
+        {% comment %} <a href="{% url 'create_r' product.id %}" class="btn btn-primary">Add Review</a> {% endcomment %}
 
 
     <h3>Dates:</h3>

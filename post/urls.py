@@ -9,5 +9,6 @@ urlpatterns = [
     path('create_r', views.review_create),
     path('category', views.category_view),
     path('product/<int:product_id>/', views.product_datail_view),
+    path('product/<int:product_id>/update', views.product_update_view),
     path('categories/<int:category_id>/', views.category_products, name='category_products'),
 ]

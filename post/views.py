@@ -105,7 +105,47 @@ def review_create(request):
     context = {'form': form}
     return render(request, 'create_r.html', context)
 
+# def product_update_view(request, product_id):
+#     product = get_object_or_404(Product, id=product_id)
 
+#     if request.method == 'POST':
+#         form = ProductCreateForm(request.POST, request.FILES, instance=product)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('product_detail', product_id=product_id)
+#     else:
+#         form = ProductCreateForm(instance=product)
+
+#     context = {
+#         'form': form,
+#         'product': product,
+#     }
+
+#     return render(request, 'update.html', context)
+
+def product_update_view(request, product_id):
+    try:
+        product = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        return render(request, 'errors/404.html')
+
+    if request.method == "GET":
+        context = {
+            'form' : ProductCreateForm(instance=product)
+        }
+        return render(request, 'update.html', context)
+
+    if request.method == "POST":
+        form = ProductCreateForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+
+            return redirect(f'/product/{product_id}')
+
+    context = {
+        'form' : form
+    }
+    return render (request, 'product/update.html', context)
 
 # def hello_world(request):
 #     #return HttpResponse("Hello Bruh! What's up ?")
