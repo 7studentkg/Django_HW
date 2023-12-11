@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bishkek'#'UTC'
 
 USE_I18N = True
 
@@ -313,3 +313,6 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False
 }
+
+
+PAGE_SIZE = 3

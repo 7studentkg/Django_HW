@@ -6,6 +6,12 @@
     Product
 <h1>
 
+  <form action="product" method = "GET">
+    <input type="text" name="search" placeholder="Search">
+    <input type="submit" value="Search">
+
+  </form>
+
     {%for product in products%}
     <div class="card" style="width: 15rem;">
         <img src="/media/{{product.image}}" class="card-img-top" alt="...">
@@ -19,7 +25,11 @@
 
     {% endfor %}
 
-
+    <div style='margin;'>
+    {% for page in pages %}
+    <a href="?page={{page}}" method = 'GET'>{{page}}</a>
+    {% endfor %}
+    </div>
 
 
 {% endblock %}

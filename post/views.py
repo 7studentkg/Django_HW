@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 # from datetime import datetime
+from django.conf import settings
 
 from post.models import Product, Category, Review
 from post.forms import ProductCreateForm, CategoryCreateForm, ReviewCreateForm
@@ -19,10 +20,27 @@ def product_view(request):
         categories = Category.objects.all()
         reviews = Review.objects.all()
 
+        search = request.GET.get('search')
+        if search:
+            products = products.filter(title__icontains=search)
+
+        max_page = products.__len__() / settings.PAGE_SIZE
+        if round(max_page) < max_page:
+            max_page = round(max_page) + 1
+        else:
+            max_page = round(max_page)
+
+        page = int(request.GET.get('page', 1))
+        start = (page - 1 ) * settings.PAGE_SIZE
+        end = page * settings.PAGE_SIZE
+
+        products= products[start:end]
+
         context = {
             'products': products,
             'category' : categories,
             'reviews' : reviews,
+            'pages' : range(1, max_page + 1 )
 
         }
 

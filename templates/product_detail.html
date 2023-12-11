@@ -18,7 +18,7 @@
     <h2>rate: {{product.rate}}</h2>
     <p>{{product.content}}</p>
 
-    <a href="update" class="btn btn-primary">Update</a> {% comment %} 43:53 {% endcomment %}
+    <a href="update" class="btn btn-primary">Update</a>
     <h3>Reviews:</h3>
     {% for review in product.review.all %}
         <p>{{review.text}}</p>
@@ -29,6 +29,6 @@
 
     <h3>Dates:</h3>
     <p>Created: {{product.create_at}}</p>
-    <p>Created: {{product.update_at}}</p>
+    <p>Update: {{product.update_at}}</p>
 
 {% endblock%}
